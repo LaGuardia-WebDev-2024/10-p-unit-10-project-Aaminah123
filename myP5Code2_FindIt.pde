@@ -67,17 +67,41 @@ mouseClicked = function(){
 }
 
 var check = function(xClick, yClick){
-  for(var i = 0; i < planetXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, planetXPos[i], planetYPos[i])<15){
-      planetXPos.splice(i, 1);
-      planetYPos.splice(i, 1);
-      planetFound++;
+  for(var i = 0; i < greenkirbXPos.length; i++){
+    if(dist(xClick - 5, yClick - 5, greenkirbXPos[i], greenkirbYPos[i])<15){
+      greenkirbXPos.splice(i, 1);
+      greenkirbYPos.splice(i, 1);
+      greenkirbFound++;
+    }
+  }
+
+  for(var i = 0; i < palekirbXPos.length; i++){
+    if(dist(xClick - 5, yClick - 5, palekirbXPos[i], palekirbYPos[i])<15){
+      palekirbXPos.splice(i, 1);
+      palekirbYPos.splice(i, 1);
+      palekirbFound++;
+    }
+  }
+
+  for(var i = 0; i < redkirbXPos.length; i++){
+    if(dist(xClick - 5, yClick - 5, redkirbXPos[i], redkirbYPos[i])<15){
+      redkirbXPos.splice(i, 1);
+      redkirbYPos.splice(i, 1);
+      redkirbFound++;
+    }
+  }
+
+  for(var i = 0; i < purpkirbXPos.length; i++){
+    if(dist(xClick - 5, yClick - 5, purpkirbXPos[i], purpkirbYPos[i])<15){
+      purpkirbXPos.splice(i, 1);
+      purpkirbYPos.splice(i, 1);
+      purpkirbFound++;
     }
   }
 }
 
 var display = function(){
-  background(100,100,100);
+  background(39, 46, 143);
 
   fill(200,200,0);
   textSize(20);
@@ -111,10 +135,10 @@ var display = function(){
     text(star, starXPos[i], starYPos[i]);
   }*/
 
+  fill(250, 234, 65);
+  rect(-5,400,605,50);
   fill(0,0,0);
-  rect(0,400,600,50);
-  fill(255,255,255);
-  text("Find The " + planet + "s   |   " + planet + " " + planetFound + "/" + planetTotal, 0, 425);
+  text("Find The " + planet + "s   |   " + planet + " " + planetFound + "/" + planetTotal, 10, 425);
 
   if(planetFound == planetTotal){
     fill(0, 200, 200);
@@ -125,6 +149,32 @@ var display = function(){
 
 var reset = function(){
    
+  ogkirbXPos = [];
+  ogkirbYPos = [];
+  greenkirbXPos = [];
+  greenkirbYPos = [];
+  greenkirbFound = 0;
+
+  ogkirbXPos = [];
+  ogkirbYPos = [];
+  palekirbXPos = [];
+  palekirbYPos = [];
+  palekirbFound = 0;
+
+  ogkirbXPos = [];
+  ogkirbYPos = [];
+  redkirbXPos = [];
+  redkirbYPos = [];
+  redkirbFound = 0;
+
+  ogkirbXPos = [];
+  ogkirbYPos = [];
+  purpkirbXPos = [];
+  purpkirbYPos = [];
+  purpkirbFound = 0;
+
+
+
    for(var i = 0; i < ogkirbTotal; i++){
     ogkirbXPos.push(random(0,600));
     ogkirbYPos.push(random(0,400));

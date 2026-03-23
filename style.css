@@ -1,6 +1,6 @@
 body {
-  background-image: url("Sprinkles.jpg");
-  background-color: hsl(213, 85%, 92%);
+  background-image: url("https://t3.ftcdn.net/jpg/06/15/41/74/360_F_615417466_jkCo4nh3xCsl6U9XCjwZw2bmDPgMxmSA.jpg");
+  background-color: hsla(236, 79%, 29%, 0.603);
   background-blend-mode: overlay;
   text-align: center;
   background-size: cover;
@@ -14,11 +14,16 @@ html{
   width: 100%;
 }
 
+h2{
+  color: rgb(250, 234, 65);
+}
+
 
 
 #myCanvas2 {
-  border: 1px solid black;
-  border-radius: 30px;
+  background-color: blue;
+  border: 3px solid rgb(250, 234, 65);
+  border-radius: 35px;
 }
 
 
