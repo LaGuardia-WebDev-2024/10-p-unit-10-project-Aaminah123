@@ -14,13 +14,7 @@ html{
   width: 100%;
 }
 
-#myCanvas1 {
-  border: 1px solid black;
-  background-image: url("supermarket-interior-shelf_165488-3982.avif");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
 
 #myCanvas2 {
   border: 1px solid black;
