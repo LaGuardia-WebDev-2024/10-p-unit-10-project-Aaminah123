@@ -42,11 +42,11 @@ var palekirbXPos = [];
 var palekirbYPos = [];
 var palekirbTotal = 25;
 
-
+var move = 1;
 
 setup = function() {
    size(600, 450); 
-
+   
    reset();
 }
 
@@ -67,35 +67,11 @@ mouseClicked = function(){
 }
 
 var check = function(xClick, yClick){
-  for(var i = 0; i < greenkirbXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, greenkirbXPos[i], greenkirbYPos[i])<15){
-      greenkirbXPos.splice(i, 1);
-      greenkirbYPos.splice(i, 1);
-      greenkirbFound++;
-    }
-  }
-
-  for(var i = 0; i < palekirbXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, palekirbXPos[i], palekirbYPos[i])<15){
-      palekirbXPos.splice(i, 1);
-      palekirbYPos.splice(i, 1);
-      palekirbFound++;
-    }
-  }
-
-  for(var i = 0; i < redkirbXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, redkirbXPos[i], redkirbYPos[i])<15){
-      redkirbXPos.splice(i, 1);
-      redkirbYPos.splice(i, 1);
-      redkirbFound++;
-    }
-  }
-
-  for(var i = 0; i < purpkirbXPos.length; i++){
-    if(dist(xClick - 5, yClick - 5, purpkirbXPos[i], purpkirbYPos[i])<15){
-      purpkirbXPos.splice(i, 1);
-      purpkirbYPos.splice(i, 1);
-      purpkirbFound++;
+  for(var i = 0; i < ogkirbXPos.length; i++){
+    if(dist(xClick , yClick , ogkirbXPos[i] + 30, ogkirbYPos[i] + 25)<20){
+      ogkirbXPos.splice(i, 1);
+      ogkirbYPos.splice(i, 1);
+      ogkirbFound++;
     }
   }
 }
@@ -107,23 +83,43 @@ var display = function(){
   textSize(20);
 
   for(var i = 0; i < ogkirbXPos.length; i ++){
-    image(ogkirb, ogkirbXPos[i], ogkirbYPos[i]);
+    image(ogkirb, ogkirbXPos[i], ogkirbYPos[i], 55, 55);
+    ogkirbXPos[i] += move;
+
+    if(ogkirbXPos[i] > 580){
+      move = -1
+    }
+
+    if(ogkirbXPos[1] <-90){
+      move = 1
+    }
+
   }
 
   for(var i = 0; i < greenkirbXPos.length; i ++){
-    image(greenkirb, greenkirbXPos[i], greenkirbYPos[i]);
+    image(greenkirb, greenkirbXPos[i], greenkirbYPos[i], 55, 55);
+
+    greenkirbXPos[i] += move;
+
+    if(greenkirbXPos[i] > 580){
+      move = -1
+    }
+
+    if(greenkirbXPos[1] <-90){
+      move = 1
+    }
   }
 
   for(var i = 0; i < palekirbXPos.length; i ++){
-    image(palekirb, palekirbXPos[i], palekirbYPos[i]);
+    image(palekirb, palekirbXPos[i], palekirbYPos[i], 55, 55);
   }
 
   for(var i = 0; i < redkirbXPos.length; i ++){
-    image(redkirb, redkirbXPos[i], redkirbYPos[i]);
+    image(redkirb, redkirbXPos[i], redkirbYPos[i], 55, 55);
   }
 
   for(var i = 0; i < purpkirbXPos.length; i ++){
-    image(purpkirb, purpkirbXPos[i], purpkirbYPos[i]);
+    image(purpkirb, purpkirbXPos[i], purpkirbYPos[i], 55, 55);
   }
 
 
@@ -138,10 +134,12 @@ var display = function(){
   fill(250, 234, 65);
   rect(-5,400,605,50);
   fill(0,0,0);
-  text("Find The " + planet + "s   |   " + planet + " " + planetFound + "/" + planetTotal, 10, 425);
-
-  if(planetFound == planetTotal){
-    fill(0, 200, 200);
+  text("Find The " + planet + "  | " + planet + " " + ogkirbFound + "/" + ogkirbTotal, 10, 425);
+  image(ogkirb,95,403,30,30);
+  image(ogkirb,143,403,30,30);
+  
+  if(ogkirbFound == ogkirbTotal){
+    fill(250, 234, 65);
     textSize(50);
     text("Press 'r' to restart \nthe game", 50, 200);
   }

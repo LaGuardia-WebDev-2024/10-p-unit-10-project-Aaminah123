@@ -1,6 +1,6 @@
 body {
   background-image: url("https://t3.ftcdn.net/jpg/06/15/41/74/360_F_615417466_jkCo4nh3xCsl6U9XCjwZw2bmDPgMxmSA.jpg");
-  background-color: hsla(236, 79%, 29%, 0.603);
+  background-color: hsla(236, 79%, 36%, 0.473);
   background-blend-mode: overlay;
   text-align: center;
   background-size: cover;
@@ -16,6 +16,8 @@ html{
 
 h2{
   color: rgb(250, 234, 65);
+  font-family: "DynaPuff", system-ui;
+  font-size:xx-large;
 }
 
 
