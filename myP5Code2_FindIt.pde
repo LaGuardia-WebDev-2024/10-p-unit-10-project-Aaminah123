@@ -16,33 +16,43 @@ var redkirb = loadImage("red.png");
 var purpkirb = loadImage("urple.png");
 var palekirb = loadImage("pale.png");
 
+var warp = loadImage("warp.png");
+
+var victory = loadImage("victory.gif");
+
+
 //original
 var ogkirbXPos = [];
 var ogkirbYPos = [];
 var ogkirbTotal = 5;
 var ogkirbFound = 0;
+var ogkirbAmp = 2;
 
 //green
 var greenkirbXPos = [];
 var greenkirbYPos = [];
 var greenkirbTotal = 25;
+var greenkirbAmp = 2;
 
 //red
 var redkirbXPos = [];
 var redkirbYPos = [];
 var redkirbTotal = 25;
+var redkirbAmp = 1;
 
 //purple
 var purpkirbXPos = [];
 var purpkirbYPos = [];
 var purpkirbTotal = 25;
+var purpkirbAmp = 1;
 
 //pale
 var palekirbXPos = [];
 var palekirbYPos = [];
 var palekirbTotal = 25;
+var palekirbAmp = 1;
 
-var move = 1;
+var time = 0;
 
 setup = function() {
    size(600, 450); 
@@ -57,7 +67,7 @@ draw = function(){
       reset();
     }
    }
-
+  
   display();
 }
 
@@ -67,51 +77,36 @@ mouseClicked = function(){
 }
 
 var check = function(xClick, yClick){
-  for(var i = 0; i < ogkirbXPos.length; i++){
-    if(dist(xClick , yClick , ogkirbXPos[i] + 30, ogkirbYPos[i] + 25)<20){
-      ogkirbXPos.splice(i, 1);
-      ogkirbYPos.splice(i, 1);
+  var k = 0;
+  while(k < ogkirbXPos.length){
+    if(dist(xClick , yClick , ogkirbXPos[k] + 30, ogkirbYPos[k] + 25)<20){
+      ogkirbXPos.splice(k, 1);
+      ogkirbYPos.splice(k, 1);
       ogkirbFound++;
     }
+    k++;
   }
 }
 
 var display = function(){
   background(39, 46, 143);
-
+  cursor(warp);
   fill(200,200,0);
   textSize(20);
 
   for(var i = 0; i < ogkirbXPos.length; i ++){
     image(ogkirb, ogkirbXPos[i], ogkirbYPos[i], 55, 55);
-    ogkirbXPos[i] += move;
-
-    if(ogkirbXPos[i] > 580){
-      move = -1
-    }
-
-    if(ogkirbXPos[1] <-90){
-      move = 1
-    }
-
+    ogkirbXPos[i] += ogkirbAmp * Math.sin(time);
   }
 
   for(var i = 0; i < greenkirbXPos.length; i ++){
     image(greenkirb, greenkirbXPos[i], greenkirbYPos[i], 55, 55);
-
-    greenkirbXPos[i] += move;
-
-    if(greenkirbXPos[i] > 580){
-      move = -1
-    }
-
-    if(greenkirbXPos[1] <-90){
-      move = 1
-    }
+    greenkirbXPos[i] += greenkirbAmp * Math.sin(time + 1);
   }
 
   for(var i = 0; i < palekirbXPos.length; i ++){
     image(palekirb, palekirbXPos[i], palekirbYPos[i], 55, 55);
+    palekirbXPos[i] += palekirbAmp * Math.sin(time + 2);
   }
 
   for(var i = 0; i < redkirbXPos.length; i ++){
@@ -122,6 +117,7 @@ var display = function(){
     image(purpkirb, purpkirbXPos[i], purpkirbYPos[i], 55, 55);
   }
 
+  time += .05;
 
   /*for(var i = 0; i < planetXPos.length; i ++){
     text(planet, planetXPos[i], planetYPos[i]);
@@ -140,6 +136,7 @@ var display = function(){
   
   if(ogkirbFound == ogkirbTotal){
     fill(250, 234, 65);
+    image(victory,0,0,600,400);
     textSize(50);
     text("Press 'r' to restart \nthe game", 50, 200);
   }
@@ -149,24 +146,20 @@ var reset = function(){
    
   ogkirbXPos = [];
   ogkirbYPos = [];
+  ogkirbFound = 0;
+
   greenkirbXPos = [];
   greenkirbYPos = [];
   greenkirbFound = 0;
 
-  ogkirbXPos = [];
-  ogkirbYPos = [];
   palekirbXPos = [];
   palekirbYPos = [];
   palekirbFound = 0;
 
-  ogkirbXPos = [];
-  ogkirbYPos = [];
   redkirbXPos = [];
   redkirbYPos = [];
   redkirbFound = 0;
 
-  ogkirbXPos = [];
-  ogkirbYPos = [];
   purpkirbXPos = [];
   purpkirbYPos = [];
   purpkirbFound = 0;
@@ -174,28 +167,28 @@ var reset = function(){
 
 
    for(var i = 0; i < ogkirbTotal; i++){
-    ogkirbXPos.push(random(0,600));
-    ogkirbYPos.push(random(0,400));
+    ogkirbXPos.push(random(0,550));
+    ogkirbYPos.push(random(0,350));
   }
 
   for(var i = 0; i < greenkirbTotal; i++){
-    greenkirbXPos.push(random(0,600));
-    greenkirbYPos.push(random(0,400));
+    greenkirbXPos.push(random(0,550));
+    greenkirbYPos.push(random(0,350));
   }
 
   for(var i = 0; i < palekirbTotal; i++){
-    palekirbXPos.push(random(0,600));
-    palekirbYPos.push(random(0,400));
+    palekirbXPos.push(random(0,550));
+    palekirbYPos.push(random(0,350));
   }
 
   for(var i = 0; i < redkirbTotal; i++){
-    redkirbXPos.push(random(0,600));
-    redkirbYPos.push(random(0,400));
+    redkirbXPos.push(random(0,550));
+    redkirbYPos.push(random(0,350));
   }
 
   for(var i = 0; i < purpkirbTotal; i++){
-    purpkirbXPos.push(random(0,600));
-    purpkirbYPos.push(random(0,400));
+    purpkirbXPos.push(random(0,550));
+    purpkirbYPos.push(random(0,350));
   }
 
   /*starXPos = [];
