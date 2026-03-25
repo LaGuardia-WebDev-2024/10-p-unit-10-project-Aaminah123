@@ -111,25 +111,19 @@ var display = function(){
 
   for(var i = 0; i < redkirbXPos.length; i ++){
     image(redkirb, redkirbXPos[i], redkirbYPos[i], 55, 55);
+    redkirbXPos[i] += redkirbAmp * Math.sin(time + .5);
   }
 
   for(var i = 0; i < purpkirbXPos.length; i ++){
     image(purpkirb, purpkirbXPos[i], purpkirbYPos[i], 55, 55);
+    purpkirbXPos[i] += purpkirbAmp * Math.sin(time + 3);
   }
 
   time += .05;
 
-  /*for(var i = 0; i < planetXPos.length; i ++){
-    text(planet, planetXPos[i], planetYPos[i]);
-  }
-
-  for(var i = 0; i < starXPos.length; i ++){
-    text(star, starXPos[i], starYPos[i]);
-  }*/
-
   fill(250, 234, 65);
   rect(-5,400,605,50);
-  fill(0,0,0);
+  fill(19, 36, 161);
   text("Find The " + planet + "  | " + planet + " " + ogkirbFound + "/" + ogkirbTotal, 10, 425);
   image(ogkirb,95,403,30,30);
   image(ogkirb,143,403,30,30);
@@ -165,7 +159,6 @@ var reset = function(){
   purpkirbFound = 0;
 
 
-
    for(var i = 0; i < ogkirbTotal; i++){
     ogkirbXPos.push(random(0,550));
     ogkirbYPos.push(random(0,350));
@@ -190,21 +183,5 @@ var reset = function(){
     purpkirbXPos.push(random(0,550));
     purpkirbYPos.push(random(0,350));
   }
-
-  /*starXPos = [];
-  starYPos = [];
-  planetXPos = [];
-  planetYPos = [];
-  planetFound = 0;
-
-
-  for(var i = 0; i < starTotal; i++){
-    starXPos.push(random(0,600));
-    starYPos.push(random(0,400));
-  }
-
-  for(var i = 0; i < planetTotal; i++){
-    planetXPos.push(random(0,600));
-    planetYPos.push(random(0,400));
-  }*/
+  
 }
