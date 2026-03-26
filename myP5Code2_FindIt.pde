@@ -15,10 +15,10 @@ var greenkirb = loadImage("green.png");
 var redkirb = loadImage("red.png");
 var purpkirb = loadImage("urple.png");
 var palekirb = loadImage("pale.png");
+var carkirb = loadImage("https://cdn.mos.cms.futurecdn.net/VWNYrSJUdBNoJbdK9WHgCA.jpg");
 
 var warp = loadImage("warp.png");
 
-var victory = loadImage("victory.gif");
 
 
 //original
@@ -130,7 +130,7 @@ var display = function(){
   
   if(ogkirbFound == ogkirbTotal){
     fill(250, 234, 65);
-    image(victory,0,0,600,400);
+    image(carkirb,0,0,600,400);
     textSize(50);
     text("Press 'r' to restart \nthe game", 50, 200);
   }
